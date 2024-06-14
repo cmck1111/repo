@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.demos.mapper.Tusermapper">
+    <insert id="Insertuser" >
+        INSERT INTO t_user (User_Name,pwd) VALUES (#{username},#{password})
+    </insert>
+    <update id="Updateuser">
+        UPDATE t_user SET User_Name = #{username},pwd = #{password} WHERE id = #{id}
+    </update>
+    <delete id="DeleteUser">
+        DELETE FROM t_user WHERE id = #{id}
+    </delete>
+    <delete id="DeleteUserByname">
+        DELETE FROM t_user WHERE User_Name = #{username}
+    </delete>
+
+    <select id="findalluser" resultType="com.example.demo.demos.model.TUser">
+        select * from t_user
+    </select>
+    <select id="Selectuserbyid" resultType="com.example.demo.demos.model.TUser">
+        select * from t_user where id=#{id}
+    </select>
+    <select id="Selectuserbyname" resultType="com.example.demo.demos.model.TUser">
+        select * from t_user where  User_Name like concat('%',#{username},'%')
+    </select>
+
+</mapper>
